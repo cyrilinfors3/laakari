@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "dmanager" : {
+            "home": {
+                "title": "Dmanagers",
+                "createLabel": "Créer un nouveau Dmanager",
+                "createOrEditLabel": "Créer ou éditer un Dmanager",
+                "search": "Recherche pour Dmanager"
+            },
+            "created": "Un nouveau Dmanager a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dmanager avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dmanager avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dmanager {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dmanager"
+            },
+            "tel": "Tel",
+            "agentcode": "Agentcode",
+            "lprofil": "Lprofil",
+            "luser": "Luser"
+        }
+    }
+}

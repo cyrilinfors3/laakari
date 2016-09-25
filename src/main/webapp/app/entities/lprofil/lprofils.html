@@ -1,0 +1,83 @@
+<div>
+    <h2 data-translate="laakariApp.lprofil.home.title">Lprofils</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="lprofil.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="laakariApp.lprofil.home.createLabel">
+                        Create new Lprofil
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="login"><span data-translate="laakariApp.lprofil.login">Login</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pass"><span data-translate="laakariApp.lprofil.pass">Pass</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tel"><span data-translate="laakariApp.lprofil.tel">Tel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pic"><span data-translate="laakariApp.lprofil.pic">Pic</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dmanager.id"><span data-translate="laakariApp.lprofil.dmanager">Dmanager</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dealer.id"><span data-translate="laakariApp.lprofil.dealer">Dealer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sdealer.id"><span data-translate="laakariApp.lprofil.sdealer">Sdealer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lprofil in vm.lprofils track by lprofil.id">
+                    <td><a ui-sref="lprofil-detail({id:lprofil.id})">{{lprofil.id}}</a></td>
+                    <td>{{lprofil.login}}</td>
+                    <td>{{lprofil.pass}}</td>
+                    <td>{{lprofil.tel}}</td>
+                    <td>
+                        <a ng-if="lprofil.pic" ng-click="vm.openFile(lprofil.picContentType, lprofil.pic)">
+                            <img data-ng-src="{{'data:' + lprofil.picContentType + ';base64,' + lprofil.pic}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="lprofil.pic">{{lprofil.picContentType}}, {{vm.byteSize(lprofil.pic)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="dmanager-detail({id:lprofil.dmanager.id})">{{lprofil.dmanager.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dealer-detail({id:lprofil.dealer.id})">{{lprofil.dealer.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="sdealer-detail({id:lprofil.sdealer.id})">{{lprofil.sdealer.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="lprofil-detail({id:lprofil.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lprofil.edit({id:lprofil.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lprofil.delete({id:lprofil.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

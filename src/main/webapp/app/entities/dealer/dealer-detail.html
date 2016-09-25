@@ -1,0 +1,44 @@
+
+<div>
+    <h2><span data-translate="laakariApp.dealer.detail.title">Dealer</span> {{vm.dealer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.dealer.shopcode">Shopcode</span></dt>
+        <dd>
+            <span>{{vm.dealer.shopcode}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.dealer.sigle">Sigle</span></dt>
+        <dd>
+            <span>{{vm.dealer.sigle}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.dealer.mastersim">Mastersim</span></dt>
+        <dd>
+            <span>{{vm.dealer.mastersim}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.dealer.logo">Logo</span></dt>
+        <dd>
+            <div ng-if="vm.dealer.logo">
+                <a ng-click="vm.openFile(vm.dealer.logoContentType, vm.dealer.logo)">
+                    <img data-ng-src="{{'data:' + vm.dealer.logoContentType + ';base64,' + vm.dealer.logo}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.dealer.logoContentType}}, {{vm.byteSize(vm.dealer.logo)}}
+            </div>
+        </dd>
+        <dt><span data-translate="laakariApp.dealer.luser">Luser</span></dt>
+        <dd>
+            <a ui-sref="luser-detail({id:vm.dealer.luser.id})">{{vm.dealer.luser.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="dealer-detail.edit({id:vm.dealer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

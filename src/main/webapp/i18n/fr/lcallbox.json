@@ -1,0 +1,30 @@
+{
+    "laakariApp": {
+        "lcallbox" : {
+            "home": {
+                "title": "Lcallboxes",
+                "createLabel": "Créer un nouveau Lcallbox",
+                "createOrEditLabel": "Créer ou éditer un Lcallbox",
+                "search": "Recherche pour Lcallbox"
+            },
+            "created": "Un nouveau Lcallbox a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lcallbox avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lcallbox avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lcallbox {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lcallbox"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "dateofbirth": "Dateofbirth",
+            "quatier": "Quatier",
+            "mastersim": "Mastersim",
+            "sex": "Sex",
+            "lvisit": "Lvisit",
+            "lpoint": "Lpoint",
+            "lroute": "Lroute"
+        }
+    }
+}

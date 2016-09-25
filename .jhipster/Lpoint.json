@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lcarte",
+            "otherEntityName": "lcarte",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "lpoint"
+        },
+        {
+            "relationshipName": "lcallbox",
+            "otherEntityName": "lcallbox",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "lpoint"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "lati",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "longi",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160925120006",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lpoint",
+    "pagination": "pager"
+}

@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="laakariApp.lcallbox.detail.title">Lcallbox</span> {{vm.lcallbox.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.lcallbox.nom">Nom</span></dt>
+        <dd>
+            <span>{{vm.lcallbox.nom}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{vm.lcallbox.prenom}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.dateofbirth">Dateofbirth</span></dt>
+        <dd>
+            <span>{{vm.lcallbox.dateofbirth | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.quatier">Quatier</span></dt>
+        <dd>
+            <span>{{vm.lcallbox.quatier}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.mastersim">Mastersim</span></dt>
+        <dd>
+            <span>{{vm.lcallbox.mastersim}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.sex">Sex</span></dt>
+        <dd>
+            <span data-translate="{{'laakariApp.Sex.' + vm.lcallbox.sex}}">{{vm.lcallbox.sex}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.lpoint">Lpoint</span></dt>
+        <dd>
+            <a ui-sref="lpoint-detail({id:vm.lcallbox.lpoint.id})">{{vm.lcallbox.lpoint.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.lcallbox.lroute">Lroute</span></dt>
+        <dd>
+            <a ui-sref="lroute-detail({id:vm.lcallbox.lroute.id})">{{vm.lcallbox.lroute.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="lcallbox-detail.edit({id:vm.lcallbox.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

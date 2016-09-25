@@ -1,0 +1,52 @@
+
+<div>
+    <h2><span data-translate="laakariApp.lprofil.detail.title">Lprofil</span> {{vm.lprofil.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.lprofil.login">Login</span></dt>
+        <dd>
+            <span>{{vm.lprofil.login}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.pass">Pass</span></dt>
+        <dd>
+            <span>{{vm.lprofil.pass}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.tel">Tel</span></dt>
+        <dd>
+            <span>{{vm.lprofil.tel}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.pic">Pic</span></dt>
+        <dd>
+            <div ng-if="vm.lprofil.pic">
+                <a ng-click="vm.openFile(vm.lprofil.picContentType, vm.lprofil.pic)">
+                    <img data-ng-src="{{'data:' + vm.lprofil.picContentType + ';base64,' + vm.lprofil.pic}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.lprofil.picContentType}}, {{vm.byteSize(vm.lprofil.pic)}}
+            </div>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.dmanager">Dmanager</span></dt>
+        <dd>
+            <a ui-sref="dmanager-detail({id:vm.lprofil.dmanager.id})">{{vm.lprofil.dmanager.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.dealer">Dealer</span></dt>
+        <dd>
+            <a ui-sref="dealer-detail({id:vm.lprofil.dealer.id})">{{vm.lprofil.dealer.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.lprofil.sdealer">Sdealer</span></dt>
+        <dd>
+            <a ui-sref="sdealer-detail({id:vm.lprofil.sdealer.id})">{{vm.lprofil.sdealer.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="lprofil-detail.edit({id:vm.lprofil.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="laakariApp.luser.detail.title">Luser</span> {{vm.luser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.luser.identifiant">Identifiant</span></dt>
+        <dd>
+            <span>{{vm.luser.identifiant}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.luser.lzone">Lzone</span></dt>
+        <dd>
+            <a ui-sref="lzone-detail({id:vm.luser.lzone.id})">{{vm.luser.lzone.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="luser-detail.edit({id:vm.luser.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

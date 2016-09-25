@@ -1,0 +1,72 @@
+<div>
+    <h2 data-translate="laakariApp.lmessage.home.title">Lmessages</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="lmessage.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="laakariApp.lmessage.home.createLabel">
+                        Create new Lmessage
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sentdate"><span data-translate="laakariApp.lmessage.sentdate">Sentdate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="msgcontent"><span data-translate="laakariApp.lmessage.msgcontent">Msgcontent</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="senthours"><span data-translate="laakariApp.lmessage.senthours">Senthours</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sender"><span data-translate="laakariApp.lmessage.sender">Sender</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="reciever"><span data-translate="laakariApp.lmessage.reciever">Reciever</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="luser.id"><span data-translate="laakariApp.lmessage.luser">Luser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lmessage in vm.lmessages track by lmessage.id">
+                    <td><a ui-sref="lmessage-detail({id:lmessage.id})">{{lmessage.id}}</a></td>
+                        <td>{{lmessage.sentdate | date:'mediumDate'}}</td>
+                    <td>{{lmessage.msgcontent}}</td>
+                    <td>{{lmessage.senthours | date:'medium'}}</td>
+                    <td>{{lmessage.sender}}</td>
+                    <td>{{lmessage.reciever}}</td>
+                    <td>
+                        <a ui-sref="luser-detail({id:lmessage.luser.id})">{{lmessage.luser.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="lmessage-detail({id:lmessage.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lmessage.edit({id:lmessage.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lmessage.delete({id:lmessage.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

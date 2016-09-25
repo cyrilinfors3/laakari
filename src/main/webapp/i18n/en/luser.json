@@ -1,0 +1,27 @@
+{
+    "laakariApp": {
+        "luser" : {
+            "home": {
+                "title": "Lusers",
+                "createLabel": "Create a new Luser",
+                "createOrEditLabel": "Create or edit a Luser",
+                "search": "Search for Luser"
+            },
+            "created": "A new Luser is created with identifier {{ param }}",
+            "updated": "A Luser is updated with identifier {{ param }}",
+            "deleted": "A Luser is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Luser {{ id }}?"
+            },
+            "detail": {
+                "title": "Luser"
+            },
+            "identifiant": "Identifiant",
+            "dmanager": "Dmanager",
+            "dealer": "Dealer",
+            "sdealer": "Sdealer",
+            "delegue": "Delegue",
+            "lzone": "Lzone"
+        }
+    }
+}

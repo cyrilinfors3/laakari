@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lprofil",
+            "otherEntityName": "lprofil",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dealer"
+        },
+        {
+            "relationshipName": "luser",
+            "otherEntityName": "luser",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "shopcode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sigle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mastersim",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "changelogDate": "20160924173915",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dealer",
+    "pagination": "pager"
+}

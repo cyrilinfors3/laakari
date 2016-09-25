@@ -1,0 +1,64 @@
+
+<div>
+    <h2><span data-translate="laakariApp.delegue.detail.title">Delegue</span> {{vm.delegue.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.delegue.code">Code</span></dt>
+        <dd>
+            <span>{{vm.delegue.code}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.mastersim">Mastersim</span></dt>
+        <dd>
+            <span>{{vm.delegue.mastersim}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.numid">Numid</span></dt>
+        <dd>
+            <span>{{vm.delegue.numid}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.issuedate">Issuedate</span></dt>
+        <dd>
+            <span>{{vm.delegue.issuedate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.dateofbirth">Dateofbirth</span></dt>
+        <dd>
+            <span>{{vm.delegue.dateofbirth | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.quatier">Quatier</span></dt>
+        <dd>
+            <span>{{vm.delegue.quatier}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.sex">Sex</span></dt>
+        <dd>
+            <span>{{vm.delegue.sex}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.pic">Pic</span></dt>
+        <dd>
+            <div ng-if="vm.delegue.pic">
+                <a ng-click="vm.openFile(vm.delegue.picContentType, vm.delegue.pic)">
+                    <img data-ng-src="{{'data:' + vm.delegue.picContentType + ';base64,' + vm.delegue.pic}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.delegue.picContentType}}, {{vm.byteSize(vm.delegue.pic)}}
+            </div>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.lprofil">Lprofil</span></dt>
+        <dd>
+            <a ui-sref="lprofil-detail({id:vm.delegue.lprofil.id})">{{vm.delegue.lprofil.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.delegue.luser">Luser</span></dt>
+        <dd>
+            <a ui-sref="luser-detail({id:vm.delegue.luser.id})">{{vm.delegue.luser.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="delegue-detail.edit({id:vm.delegue.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

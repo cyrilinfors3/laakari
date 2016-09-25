@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "lproduit" : {
+            "home": {
+                "title": "Lproduits",
+                "createLabel": "Créer un nouveau Lproduit",
+                "createOrEditLabel": "Créer ou éditer un Lproduit",
+                "search": "Recherche pour Lproduit"
+            },
+            "created": "Un nouveau Lproduit a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lproduit avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lproduit avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lproduit {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lproduit"
+            },
+            "codep": "Codep",
+            "libelle": "Libelle",
+            "prix": "Prix",
+            "ltransactions": "Ltransactions"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "dmanager",
+            "otherEntityName": "dmanager",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "luser"
+        },
+        {
+            "relationshipName": "dealer",
+            "otherEntityName": "dealer",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "luser"
+        },
+        {
+            "relationshipName": "sdealer",
+            "otherEntityName": "sdealer",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "luser"
+        },
+        {
+            "relationshipName": "delegue",
+            "otherEntityName": "delegue",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "luser"
+        },
+        {
+            "relationshipName": "lzone",
+            "otherEntityName": "lzone",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "luser"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "identifiant",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160924175535",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "luser",
+    "pagination": "pager"
+}

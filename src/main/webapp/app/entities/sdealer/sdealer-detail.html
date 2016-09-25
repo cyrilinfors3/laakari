@@ -1,0 +1,44 @@
+
+<div>
+    <h2><span data-translate="laakariApp.sdealer.detail.title">Sdealer</span> {{vm.sdealer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.sdealer.shopcode">Shopcode</span></dt>
+        <dd>
+            <span>{{vm.sdealer.shopcode}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.sdealer.sigle">Sigle</span></dt>
+        <dd>
+            <span>{{vm.sdealer.sigle}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.sdealer.mastersim">Mastersim</span></dt>
+        <dd>
+            <span>{{vm.sdealer.mastersim}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.sdealer.logo">Logo</span></dt>
+        <dd>
+            <div ng-if="vm.sdealer.logo">
+                <a ng-click="vm.openFile(vm.sdealer.logoContentType, vm.sdealer.logo)">
+                    <img data-ng-src="{{'data:' + vm.sdealer.logoContentType + ';base64,' + vm.sdealer.logo}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.sdealer.logoContentType}}, {{vm.byteSize(vm.sdealer.logo)}}
+            </div>
+        </dd>
+        <dt><span data-translate="laakariApp.sdealer.luser">Luser</span></dt>
+        <dd>
+            <a ui-sref="luser-detail({id:vm.sdealer.luser.id})">{{vm.sdealer.luser.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sdealer-detail.edit({id:vm.sdealer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

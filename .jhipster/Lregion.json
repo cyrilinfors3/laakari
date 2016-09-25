@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lzone",
+            "otherEntityName": "lzone",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "lregion"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "capital",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160925124439",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lregion",
+    "pagination": "pager"
+}

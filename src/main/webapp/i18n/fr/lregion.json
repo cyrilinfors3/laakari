@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lregion" : {
+            "home": {
+                "title": "Lregions",
+                "createLabel": "Créer un nouveau Lregion",
+                "createOrEditLabel": "Créer ou éditer un Lregion",
+                "search": "Recherche pour Lregion"
+            },
+            "created": "Un nouveau Lregion a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lregion avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lregion avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lregion {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lregion"
+            },
+            "nom": "Nom",
+            "capital": "Capital",
+            "lzone": "Lzone"
+        }
+    }
+}

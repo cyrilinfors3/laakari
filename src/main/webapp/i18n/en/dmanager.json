@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "dmanager" : {
+            "home": {
+                "title": "Dmanagers",
+                "createLabel": "Create a new Dmanager",
+                "createOrEditLabel": "Create or edit a Dmanager",
+                "search": "Search for Dmanager"
+            },
+            "created": "A new Dmanager is created with identifier {{ param }}",
+            "updated": "A Dmanager is updated with identifier {{ param }}",
+            "deleted": "A Dmanager is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dmanager {{ id }}?"
+            },
+            "detail": {
+                "title": "Dmanager"
+            },
+            "tel": "Tel",
+            "agentcode": "Agentcode",
+            "lprofil": "Lprofil",
+            "luser": "Luser"
+        }
+    }
+}

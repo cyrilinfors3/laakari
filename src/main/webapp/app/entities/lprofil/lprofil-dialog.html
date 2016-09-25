@@ -1,0 +1,106 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLprofilLabel" data-translate="laakariApp.lprofil.home.createOrEditLabel">Create or edit a Lprofil</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lprofil.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lprofil.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lprofil.login" for="field_login">Login</label>
+            <input type="text" class="form-control" name="login" id="field_login"
+                    ng-model="vm.lprofil.login"
+                    required />
+            <div ng-show="editForm.login.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.login.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lprofil.pass" for="field_pass">Pass</label>
+            <input type="text" class="form-control" name="pass" id="field_pass"
+                    ng-model="vm.lprofil.pass"
+                    required />
+            <div ng-show="editForm.pass.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.pass.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lprofil.tel" for="field_tel">Tel</label>
+            <input type="number" class="form-control" name="tel" id="field_tel"
+                    ng-model="vm.lprofil.tel"
+                    required />
+            <div ng-show="editForm.tel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tel.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tel.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPic($file, vm.lprofil)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="laakariApp.lprofil.pic" for="field_pic">Pic</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.lprofil.picContentType + ';base64,' + vm.lprofil.pic}}" style="max-height: 100px;" ng-if="vm.lprofil.pic"/>
+                <div ng-if="vm.lprofil.pic" class="help-block clearfix">
+                    <span class="pull-left">{{vm.lprofil.picContentType}}, {{vm.byteSize(vm.lprofil.pic)}}</span>
+                    <button ng-click="vm.lprofil.pic=null;vm.lprofil.picContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPic($file, vm.lprofil)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pic" id="field_pic"
+                    ng-model="vm.lprofil.pic"
+                     />
+            <input type="hidden" class="form-control" name="picContentType" id="field_picContentType"
+                    ng-model="vm.lprofil.picContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lprofil.dmanager" for="field_dmanager">Dmanager</label>
+            <select class="form-control" id="field_dmanager" name="dmanager" ng-model="vm.lprofil.dmanager" ng-options="dmanager as dmanager.id for dmanager in vm.dmanagers track by dmanager.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lprofil.dealer" for="field_dealer">Dealer</label>
+            <select class="form-control" id="field_dealer" name="dealer" ng-model="vm.lprofil.dealer" ng-options="dealer as dealer.id for dealer in vm.dealers track by dealer.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lprofil.sdealer" for="field_sdealer">Sdealer</label>
+            <select class="form-control" id="field_sdealer" name="sdealer" ng-model="vm.lprofil.sdealer" ng-options="sdealer as sdealer.id for sdealer in vm.sdealers track by sdealer.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

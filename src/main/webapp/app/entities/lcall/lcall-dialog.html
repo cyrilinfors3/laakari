@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLcallLabel" data-translate="laakariApp.lcall.home.createOrEditLabel">Create or edit a Lcall</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lcall.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lcall.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcall.emiteur" for="field_emiteur">Emiteur</label>
+            <input type="text" class="form-control" name="emiteur" id="field_emiteur"
+                    ng-model="vm.lcall.emiteur"
+                    required />
+            <div ng-show="editForm.emiteur.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.emiteur.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcall.recepteur" for="field_recepteur">Recepteur</label>
+            <input type="text" class="form-control" name="recepteur" id="field_recepteur"
+                    ng-model="vm.lcall.recepteur"
+                    required />
+            <div ng-show="editForm.recepteur.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.recepteur.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcall.calltime" for="field_calltime">Calltime</label>
+                <div class="input-group">
+                    <input id="field_calltime" type="text" class="form-control" name="calltime" datetime-picker="{{dateformat}}" ng-model="vm.lcall.calltime" is-open="vm.datePickerOpenStatus.calltime"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('calltime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.calltime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.calltime.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.calltime.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lcall.luser" for="field_luser">Luser</label>
+            <select class="form-control" id="field_luser" name="luser" ng-model="vm.lcall.luser" ng-options="luser as luser.id for luser in vm.lusers track by luser.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.luser.$invalid">
+            <p class="help-block"
+                ng-show="editForm.luser.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

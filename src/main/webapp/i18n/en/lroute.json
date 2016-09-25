@@ -1,0 +1,26 @@
+{
+    "laakariApp": {
+        "lroute" : {
+            "home": {
+                "title": "Lroutes",
+                "createLabel": "Create a new Lroute",
+                "createOrEditLabel": "Create or edit a Lroute",
+                "search": "Search for Lroute"
+            },
+            "created": "A new Lroute is created with identifier {{ param }}",
+            "updated": "A Lroute is updated with identifier {{ param }}",
+            "deleted": "A Lroute is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lroute {{ id }}?"
+            },
+            "detail": {
+                "title": "Lroute"
+            },
+            "nom": "Nom",
+            "quatier": "Quatier",
+            "ville": "Ville",
+            "lcallbox": "Lcallbox",
+            "lzone": "Lzone"
+        }
+    }
+}

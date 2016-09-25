@@ -1,0 +1,72 @@
+<div>
+    <h2 data-translate="laakariApp.lzone.home.title">Lzones</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="lzone.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="laakariApp.lzone.home.createLabel">
+                        Create new Lzone
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datecreation"><span data-translate="laakariApp.lzone.datecreation">Datecreation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datemodif"><span data-translate="laakariApp.lzone.datemodif">Datemodif</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="laakariApp.lzone.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lcarte.id"><span data-translate="laakariApp.lzone.lcarte">Lcarte</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lregion.id"><span data-translate="laakariApp.lzone.lregion">Lregion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lzone in vm.lzones track by lzone.id">
+                    <td><a ui-sref="lzone-detail({id:lzone.id})">{{lzone.id}}</a></td>
+                    <td>{{lzone.datecreation | date:'medium'}}</td>
+                    <td>{{lzone.datemodif | date:'medium'}}</td>
+                    <td>{{lzone.type}}</td>
+                    <td>
+                        <a ui-sref="lcarte-detail({id:lzone.lcarte.id})">{{lzone.lcarte.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="lregion-detail({id:lzone.lregion.id})">{{lzone.lregion.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="lzone-detail({id:lzone.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lzone.edit({id:lzone.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lzone.delete({id:lzone.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

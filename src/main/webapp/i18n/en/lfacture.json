@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "lfacture" : {
+            "home": {
+                "title": "Lfactures",
+                "createLabel": "Create a new Lfacture",
+                "createOrEditLabel": "Create or edit a Lfacture",
+                "search": "Search for Lfacture"
+            },
+            "created": "A new Lfacture is created with identifier {{ param }}",
+            "updated": "A Lfacture is updated with identifier {{ param }}",
+            "deleted": "A Lfacture is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lfacture {{ id }}?"
+            },
+            "detail": {
+                "title": "Lfacture"
+            },
+            "codebill": "Codebill",
+            "total": "Total",
+            "fdate": "Fdate",
+            "ltransactions": "Ltransactions"
+        }
+    }
+}

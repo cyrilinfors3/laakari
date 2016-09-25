@@ -1,0 +1,28 @@
+{
+    "laakariApp": {
+        "ltransactions" : {
+            "home": {
+                "title": "Ltransactions",
+                "createLabel": "Créer un nouveau Ltransactions",
+                "createOrEditLabel": "Créer ou éditer un Ltransactions",
+                "search": "Recherche pour Ltransactions"
+            },
+            "created": "Un nouveau Ltransactions a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ltransactions avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ltransactions avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ltransactions {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ltransactions"
+            },
+            "qte": "Qte",
+            "datet": "Datet",
+            "vendeur": "Vendeur",
+            "acheteur": "Acheteur",
+            "luser": "Luser",
+            "lproduit": "Lproduit",
+            "lfacture": "Lfacture"
+        }
+    }
+}

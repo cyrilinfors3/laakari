@@ -1,0 +1,75 @@
+<div>
+    <h2 data-translate="laakariApp.sdealer.home.title">Sdealers</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="sdealer.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="laakariApp.sdealer.home.createLabel">
+                        Create new Sdealer
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="shopcode"><span data-translate="laakariApp.sdealer.shopcode">Shopcode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sigle"><span data-translate="laakariApp.sdealer.sigle">Sigle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mastersim"><span data-translate="laakariApp.sdealer.mastersim">Mastersim</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="logo"><span data-translate="laakariApp.sdealer.logo">Logo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="luser.id"><span data-translate="laakariApp.sdealer.luser">Luser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sdealer in vm.sdealers track by sdealer.id">
+                    <td><a ui-sref="sdealer-detail({id:sdealer.id})">{{sdealer.id}}</a></td>
+                    <td>{{sdealer.shopcode}}</td>
+                    <td>{{sdealer.sigle}}</td>
+                    <td>{{sdealer.mastersim}}</td>
+                    <td>
+                        <a ng-if="sdealer.logo" ng-click="vm.openFile(sdealer.logoContentType, sdealer.logo)">
+                            <img data-ng-src="{{'data:' + sdealer.logoContentType + ';base64,' + sdealer.logo}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="sdealer.logo">{{sdealer.logoContentType}}, {{vm.byteSize(sdealer.logo)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="luser-detail({id:sdealer.luser.id})">{{sdealer.luser.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="sdealer-detail({id:sdealer.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sdealer.edit({id:sdealer.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sdealer.delete({id:sdealer.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

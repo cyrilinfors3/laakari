@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lcarte" : {
+            "home": {
+                "title": "Lcartes",
+                "createLabel": "Create a new Lcarte",
+                "createOrEditLabel": "Create or edit a Lcarte",
+                "search": "Search for Lcarte"
+            },
+            "created": "A new Lcarte is created with identifier {{ param }}",
+            "updated": "A Lcarte is updated with identifier {{ param }}",
+            "deleted": "A Lcarte is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lcarte {{ id }}?"
+            },
+            "detail": {
+                "title": "Lcarte"
+            },
+            "code": "Code",
+            "lpoint": "Lpoint",
+            "lzone": "Lzone"
+        }
+    }
+}

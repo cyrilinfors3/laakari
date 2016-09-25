@@ -1,0 +1,94 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySdealerLabel" data-translate="laakariApp.sdealer.home.createOrEditLabel">Create or edit a Sdealer</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.sdealer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.sdealer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.sdealer.shopcode" for="field_shopcode">Shopcode</label>
+            <input type="text" class="form-control" name="shopcode" id="field_shopcode"
+                    ng-model="vm.sdealer.shopcode"
+                    required />
+            <div ng-show="editForm.shopcode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.shopcode.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.sdealer.sigle" for="field_sigle">Sigle</label>
+            <input type="text" class="form-control" name="sigle" id="field_sigle"
+                    ng-model="vm.sdealer.sigle"
+                    required />
+            <div ng-show="editForm.sigle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sigle.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.sdealer.mastersim" for="field_mastersim">Mastersim</label>
+            <input type="number" class="form-control" name="mastersim" id="field_mastersim"
+                    ng-model="vm.sdealer.mastersim"
+                    required />
+            <div ng-show="editForm.mastersim.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mastersim.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mastersim.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setLogo($file, vm.sdealer)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="laakariApp.sdealer.logo" for="field_logo">Logo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.sdealer.logoContentType + ';base64,' + vm.sdealer.logo}}" style="max-height: 100px;" ng-if="vm.sdealer.logo"/>
+                <div ng-if="vm.sdealer.logo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.sdealer.logoContentType}}, {{vm.byteSize(vm.sdealer.logo)}}</span>
+                    <button ng-click="vm.sdealer.logo=null;vm.sdealer.logoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setLogo($file, vm.sdealer)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="logo" id="field_logo"
+                    ng-model="vm.sdealer.logo"
+                     />
+            <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                    ng-model="vm.sdealer.logoContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.sdealer.luser" for="field_luser">Luser</label>
+            <select class="form-control" id="field_luser" name="luser" ng-model="vm.sdealer.luser" ng-options="luser as luser.id for luser in vm.lusers track by luser.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

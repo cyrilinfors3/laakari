@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "luser",
+            "otherEntityName": "luser",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "lproduit",
+            "otherEntityName": "lproduit",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "ltransactions"
+        },
+        {
+            "relationshipName": "lfacture",
+            "otherEntityName": "lfacture",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "qte",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "datet",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vendeur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "acheteur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160924185133",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "ltransactions",
+    "pagination": "pager"
+}

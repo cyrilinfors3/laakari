@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLproduitLabel" data-translate="laakariApp.lproduit.home.createOrEditLabel">Create or edit a Lproduit</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lproduit.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lproduit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lproduit.codep" for="field_codep">Codep</label>
+            <input type="text" class="form-control" name="codep" id="field_codep"
+                    ng-model="vm.lproduit.codep"
+                    required />
+            <div ng-show="editForm.codep.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.codep.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lproduit.libelle" for="field_libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                    ng-model="vm.lproduit.libelle"
+                    required />
+            <div ng-show="editForm.libelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lproduit.prix" for="field_prix">Prix</label>
+            <input type="number" class="form-control" name="prix" id="field_prix"
+                    ng-model="vm.lproduit.prix"
+                    required />
+            <div ng-show="editForm.prix.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.prix.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.prix.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lproduit.ltransactions" for="field_ltransactions">Ltransactions</label>
+            <select class="form-control" id="field_ltransactions" name="ltransactions" ng-model="vm.lproduit.ltransactions" ng-options="ltransactions as ltransactions.id for ltransactions in vm.ltransactions track by ltransactions.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,27 @@
+{
+    "laakariApp": {
+        "dealer" : {
+            "home": {
+                "title": "Dealers",
+                "createLabel": "Créer un nouveau Dealer",
+                "createOrEditLabel": "Créer ou éditer un Dealer",
+                "search": "Recherche pour Dealer"
+            },
+            "created": "Un nouveau Dealer a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dealer avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dealer avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dealer {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dealer"
+            },
+            "shopcode": "Shopcode",
+            "sigle": "Sigle",
+            "mastersim": "Mastersim",
+            "logo": "Logo",
+            "lprofil": "Lprofil",
+            "luser": "Luser"
+        }
+    }
+}

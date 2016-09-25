@@ -1,0 +1,10 @@
+{
+    "laakariApp": {
+        "Sex" : {
+            "null": "",
+            "h": "h",
+            "f": "f",
+            "autre": "autre"
+        }
+    }
+}

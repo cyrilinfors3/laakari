@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lcallbox",
+            "otherEntityName": "lcallbox",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "lroute"
+        },
+        {
+            "relationshipName": "lzone",
+            "otherEntityName": "lzone",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "quatier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ville",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160925124050",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lroute",
+    "pagination": "pager"
+}

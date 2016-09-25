@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "lpoint" : {
+            "home": {
+                "title": "Lpoints",
+                "createLabel": "Create a new Lpoint",
+                "createOrEditLabel": "Create or edit a Lpoint",
+                "search": "Search for Lpoint"
+            },
+            "created": "A new Lpoint is created with identifier {{ param }}",
+            "updated": "A Lpoint is updated with identifier {{ param }}",
+            "deleted": "A Lpoint is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lpoint {{ id }}?"
+            },
+            "detail": {
+                "title": "Lpoint"
+            },
+            "lati": "Lati",
+            "longi": "Longi",
+            "lcarte": "Lcarte",
+            "lcallbox": "Lcallbox"
+        }
+    }
+}

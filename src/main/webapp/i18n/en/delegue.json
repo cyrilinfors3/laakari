@@ -1,0 +1,31 @@
+{
+    "laakariApp": {
+        "delegue" : {
+            "home": {
+                "title": "Delegues",
+                "createLabel": "Create a new Delegue",
+                "createOrEditLabel": "Create or edit a Delegue",
+                "search": "Search for Delegue"
+            },
+            "created": "A new Delegue is created with identifier {{ param }}",
+            "updated": "A Delegue is updated with identifier {{ param }}",
+            "deleted": "A Delegue is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Delegue {{ id }}?"
+            },
+            "detail": {
+                "title": "Delegue"
+            },
+            "code": "Code",
+            "mastersim": "Mastersim",
+            "numid": "Numid",
+            "issuedate": "Issuedate",
+            "dateofbirth": "Dateofbirth",
+            "quatier": "Quatier",
+            "sex": "Sex",
+            "pic": "Pic",
+            "lprofil": "Lprofil",
+            "luser": "Luser"
+        }
+    }
+}

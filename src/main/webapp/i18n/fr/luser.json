@@ -1,0 +1,27 @@
+{
+    "laakariApp": {
+        "luser" : {
+            "home": {
+                "title": "Lusers",
+                "createLabel": "Créer un nouveau Luser",
+                "createOrEditLabel": "Créer ou éditer un Luser",
+                "search": "Recherche pour Luser"
+            },
+            "created": "Un nouveau Luser a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Luser avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Luser avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Luser {{ id }} ?"
+            },
+            "detail": {
+                "title": "Luser"
+            },
+            "identifiant": "Identifiant",
+            "dmanager": "Dmanager",
+            "dealer": "Dealer",
+            "sdealer": "Sdealer",
+            "delegue": "Delegue",
+            "lzone": "Lzone"
+        }
+    }
+}

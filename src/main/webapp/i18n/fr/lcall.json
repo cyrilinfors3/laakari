@@ -1,0 +1,25 @@
+{
+    "laakariApp": {
+        "lcall" : {
+            "home": {
+                "title": "Lcalls",
+                "createLabel": "Créer un nouveau Lcall",
+                "createOrEditLabel": "Créer ou éditer un Lcall",
+                "search": "Recherche pour Lcall"
+            },
+            "created": "Un nouveau Lcall a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lcall avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lcall avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lcall {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lcall"
+            },
+            "emiteur": "Emiteur",
+            "recepteur": "Recepteur",
+            "calltime": "Calltime",
+            "luser": "Luser"
+        }
+    }
+}

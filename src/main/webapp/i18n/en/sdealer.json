@@ -1,0 +1,27 @@
+{
+    "laakariApp": {
+        "sdealer" : {
+            "home": {
+                "title": "Sdealers",
+                "createLabel": "Create a new Sdealer",
+                "createOrEditLabel": "Create or edit a Sdealer",
+                "search": "Search for Sdealer"
+            },
+            "created": "A new Sdealer is created with identifier {{ param }}",
+            "updated": "A Sdealer is updated with identifier {{ param }}",
+            "deleted": "A Sdealer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sdealer {{ id }}?"
+            },
+            "detail": {
+                "title": "Sdealer"
+            },
+            "shopcode": "Shopcode",
+            "sigle": "Sigle",
+            "mastersim": "Mastersim",
+            "logo": "Logo",
+            "lprofil": "Lprofil",
+            "luser": "Luser"
+        }
+    }
+}

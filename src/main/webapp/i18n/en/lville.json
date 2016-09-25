@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lville" : {
+            "home": {
+                "title": "Lvilles",
+                "createLabel": "Create a new Lville",
+                "createOrEditLabel": "Create or edit a Lville",
+                "search": "Search for Lville"
+            },
+            "created": "A new Lville is created with identifier {{ param }}",
+            "updated": "A Lville is updated with identifier {{ param }}",
+            "deleted": "A Lville is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lville {{ id }}?"
+            },
+            "detail": {
+                "title": "Lville"
+            },
+            "nom": "Nom",
+            "region": "Region",
+            "lzone": "Lzone"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "larrondissement" : {
+            "home": {
+                "title": "Larrondissements",
+                "createLabel": "Créer un nouveau Larrondissement",
+                "createOrEditLabel": "Créer ou éditer un Larrondissement",
+                "search": "Recherche pour Larrondissement"
+            },
+            "created": "Un nouveau Larrondissement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Larrondissement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Larrondissement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Larrondissement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Larrondissement"
+            },
+            "nom": "Nom",
+            "ville": "Ville",
+            "lzone": "Lzone"
+        }
+    }
+}

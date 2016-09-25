@@ -1,0 +1,26 @@
+{
+    "laakariApp": {
+        "lvisit" : {
+            "home": {
+                "title": "Lvisits",
+                "createLabel": "Créer un nouveau Lvisit",
+                "createOrEditLabel": "Créer ou éditer un Lvisit",
+                "search": "Recherche pour Lvisit"
+            },
+            "created": "Un nouveau Lvisit a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lvisit avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lvisit avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lvisit {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lvisit"
+            },
+            "date": "Date",
+            "contentv": "Contentv",
+            "durrationv": "Durrationv",
+            "staff": "Staff",
+            "lcallbox": "Lcallbox"
+        }
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lcarte",
+            "otherEntityName": "lcarte",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "lzone"
+        },
+        {
+            "relationshipName": "lroute",
+            "otherEntityName": "lroute",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "lzone"
+        },
+        {
+            "relationshipName": "lregion",
+            "otherEntityName": "lregion",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "lzone"
+        },
+        {
+            "relationshipName": "larrondissement",
+            "otherEntityName": "larrondissement",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "lzone"
+        },
+        {
+            "relationshipName": "lville",
+            "otherEntityName": "lville",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "lzone"
+        },
+        {
+            "relationshipName": "luser",
+            "otherEntityName": "luser",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "lzone"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "datecreation",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "datemodif",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160925115150",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lzone",
+    "pagination": "pager"
+}

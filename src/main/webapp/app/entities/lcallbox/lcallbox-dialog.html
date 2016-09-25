@@ -1,0 +1,92 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLcallboxLabel" data-translate="laakariApp.lcallbox.home.createOrEditLabel">Create or edit a Lcallbox</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lcallbox.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lcallbox.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.lcallbox.nom"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                    ng-model="vm.lcallbox.prenom"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.dateofbirth" for="field_dateofbirth">Dateofbirth</label>
+                <div class="input-group">
+                    <input id="field_dateofbirth" type="text" class="form-control" name="dateofbirth" uib-datepicker-popup="{{dateformat}}" ng-model="vm.lcallbox.dateofbirth" is-open="vm.datePickerOpenStatus.dateofbirth"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateofbirth')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.quatier" for="field_quatier">Quatier</label>
+            <input type="text" class="form-control" name="quatier" id="field_quatier"
+                    ng-model="vm.lcallbox.quatier"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.mastersim" for="field_mastersim">Mastersim</label>
+            <input type="text" class="form-control" name="mastersim" id="field_mastersim"
+                    ng-model="vm.lcallbox.mastersim"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lcallbox.sex" for="field_sex">Sex</label>
+            <select class="form-control" name="sex" ng-model="vm.lcallbox.sex" id="field_sex" required>
+                <option value="h" data-translate="laakariApp.Sex.h">h</option>
+                <option value="f" data-translate="laakariApp.Sex.f">f</option>
+                <option value="autre" data-translate="laakariApp.Sex.autre">autre</option>
+            </select>
+            <div ng-show="editForm.sex.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sex.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lcallbox.lpoint" for="field_lpoint">Lpoint</label>
+            <select class="form-control" id="field_lpoint" name="lpoint" ng-model="vm.lcallbox.lpoint" ng-options="lpoint as lpoint.id for lpoint in vm.lpoints track by lpoint.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lcallbox.lroute" for="field_lroute">Lroute</label>
+            <select class="form-control" id="field_lroute" name="lroute" ng-model="vm.lcallbox.lroute" ng-options="lroute as lroute.id for lroute in vm.lroutes track by lroute.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.lroute.$invalid">
+            <p class="help-block"
+                ng-show="editForm.lroute.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

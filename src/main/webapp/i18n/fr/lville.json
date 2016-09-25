@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lville" : {
+            "home": {
+                "title": "Lvilles",
+                "createLabel": "Créer un nouveau Lville",
+                "createOrEditLabel": "Créer ou éditer un Lville",
+                "search": "Recherche pour Lville"
+            },
+            "created": "Un nouveau Lville a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lville avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lville avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lville {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lville"
+            },
+            "nom": "Nom",
+            "region": "Region",
+            "lzone": "Lzone"
+        }
+    }
+}

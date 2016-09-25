@@ -1,0 +1,104 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLmessageLabel" data-translate="laakariApp.lmessage.home.createOrEditLabel">Create or edit a Lmessage</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lmessage.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lmessage.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lmessage.sentdate" for="field_sentdate">Sentdate</label>
+                <div class="input-group">
+                    <input id="field_sentdate" type="text" class="form-control" name="sentdate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.lmessage.sentdate" is-open="vm.datePickerOpenStatus.sentdate"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('sentdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.sentdate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sentdate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lmessage.msgcontent" for="field_msgcontent">Msgcontent</label>
+            <input type="text" class="form-control" name="msgcontent" id="field_msgcontent"
+                    ng-model="vm.lmessage.msgcontent"
+                    required />
+            <div ng-show="editForm.msgcontent.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.msgcontent.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lmessage.senthours" for="field_senthours">Senthours</label>
+                <div class="input-group">
+                    <input id="field_senthours" type="text" class="form-control" name="senthours" datetime-picker="{{dateformat}}" ng-model="vm.lmessage.senthours" is-open="vm.datePickerOpenStatus.senthours"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('senthours')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.senthours.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.senthours.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.senthours.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lmessage.sender" for="field_sender">Sender</label>
+            <input type="text" class="form-control" name="sender" id="field_sender"
+                    ng-model="vm.lmessage.sender"
+                    required />
+            <div ng-show="editForm.sender.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sender.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lmessage.reciever" for="field_reciever">Reciever</label>
+            <input type="text" class="form-control" name="reciever" id="field_reciever"
+                    ng-model="vm.lmessage.reciever"
+                    required />
+            <div ng-show="editForm.reciever.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.reciever.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lmessage.luser" for="field_luser">Luser</label>
+            <select class="form-control" id="field_luser" name="luser" ng-model="vm.lmessage.luser" ng-options="luser as luser.id for luser in vm.lusers track by luser.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

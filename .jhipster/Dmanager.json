@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lprofil",
+            "otherEntityName": "lprofil",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dmanager"
+        },
+        {
+            "relationshipName": "luser",
+            "otherEntityName": "luser",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tel",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "agentcode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160924173424",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dmanager",
+    "pagination": "pager"
+}

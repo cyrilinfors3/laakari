@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Lzone.
+    -->
+    <changeSet id="20160925115150-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lcarte_id"
+                                 baseTableName="lzone"
+                                 constraintName="fk_lzone_lcarte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lcarte"/>
+
+        <addForeignKeyConstraint baseColumnNames="lregion_id"
+                                 baseTableName="lzone"
+                                 constraintName="fk_lzone_lregion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lregion"/>
+
+        <addForeignKeyConstraint baseColumnNames="lzones_id"
+                                 baseTableName="lzone_larrondissement"
+                                 constraintName="fk_lzone_larrondissement_lzones_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lzone"/>
+        <addForeignKeyConstraint baseColumnNames="larrondissements_id"
+                                 baseTableName="lzone_larrondissement"
+                                 constraintName="fk_lzone_larrondissement_larrondissements_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="larrondissement"/>
+        
+        <addForeignKeyConstraint baseColumnNames="lzones_id"
+                                 baseTableName="lzone_lville"
+                                 constraintName="fk_lzone_lville_lzones_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lzone"/>
+        <addForeignKeyConstraint baseColumnNames="lvilles_id"
+                                 baseTableName="lzone_lville"
+                                 constraintName="fk_lzone_lville_lvilles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lville"/>
+        
+    </changeSet>
+</databaseChangeLog>

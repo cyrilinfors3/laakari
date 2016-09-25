@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLzoneLabel" data-translate="laakariApp.lzone.home.createOrEditLabel">Create or edit a Lzone</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.lzone.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.lzone.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lzone.datecreation" for="field_datecreation">Datecreation</label>
+                <div class="input-group">
+                    <input id="field_datecreation" type="text" class="form-control" name="datecreation" datetime-picker="{{dateformat}}" ng-model="vm.lzone.datecreation" is-open="vm.datePickerOpenStatus.datecreation"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datecreation')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.datecreation.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.datecreation.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.datecreation.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lzone.datemodif" for="field_datemodif">Datemodif</label>
+                <div class="input-group">
+                    <input id="field_datemodif" type="text" class="form-control" name="datemodif" datetime-picker="{{dateformat}}" ng-model="vm.lzone.datemodif" is-open="vm.datePickerOpenStatus.datemodif"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datemodif')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.lzone.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.lzone.type"
+                    required />
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.type.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.lzone.lcarte" for="field_lcarte">Lcarte</label>
+            <select class="form-control" id="field_lcarte" name="lcarte" ng-model="vm.lzone.lcarte" ng-options="lcarte as lcarte.id for lcarte in vm.lcartes | orderBy:'id' track by lcarte.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lzone.lregion" for="field_lregion">Lregion</label>
+            <select class="form-control" id="field_lregion" name="lregion" ng-model="vm.lzone.lregion" ng-options="lregion as lregion.id for lregion in vm.lregions | orderBy:'id' track by lregion.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lzone.larrondissement" for="field_larrondissement">Larrondissement</label>
+            <select class="form-control" id="field_larrondissement" multiple name="larrondissement" ng-model="vm.lzone.larrondissements" ng-options="larrondissement as larrondissement.id for larrondissement in vm.larrondissements track by larrondissement.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.lzone.lville" for="field_lville">Lville</label>
+            <select class="form-control" id="field_lville" multiple name="lville" ng-model="vm.lzone.lvilles" ng-options="lville as lville.id for lville in vm.lvilles track by lville.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

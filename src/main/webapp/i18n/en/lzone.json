@@ -1,0 +1,30 @@
+{
+    "laakariApp": {
+        "lzone" : {
+            "home": {
+                "title": "Lzones",
+                "createLabel": "Create a new Lzone",
+                "createOrEditLabel": "Create or edit a Lzone",
+                "search": "Search for Lzone"
+            },
+            "created": "A new Lzone is created with identifier {{ param }}",
+            "updated": "A Lzone is updated with identifier {{ param }}",
+            "deleted": "A Lzone is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lzone {{ id }}?"
+            },
+            "detail": {
+                "title": "Lzone"
+            },
+            "datecreation": "Datecreation",
+            "datemodif": "Datemodif",
+            "type": "Type",
+            "lcarte": "Lcarte",
+            "lroute": "Lroute",
+            "lregion": "Lregion",
+            "larrondissement": "Larrondissement",
+            "lville": "Lville",
+            "luser": "Luser"
+        }
+    }
+}

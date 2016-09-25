@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lcallbox",
+            "otherEntityName": "lcallbox",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "contentv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "durrationv",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "staff",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160925120753",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lvisit",
+    "pagination": "pager"
+}

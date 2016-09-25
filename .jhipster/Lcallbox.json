@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "lvisit",
+            "otherEntityName": "lvisit",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "lcallbox"
+        },
+        {
+            "relationshipName": "lpoint",
+            "otherEntityName": "lpoint",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "lroute",
+            "otherEntityName": "lroute",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateofbirth",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "quatier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mastersim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sex",
+            "fieldType": "Sex",
+            "fieldValues": "h,f,autre",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160925121320",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lcallbox",
+    "pagination": "pager"
+}

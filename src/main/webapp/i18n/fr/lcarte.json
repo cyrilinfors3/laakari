@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lcarte" : {
+            "home": {
+                "title": "Lcartes",
+                "createLabel": "Créer un nouveau Lcarte",
+                "createOrEditLabel": "Créer ou éditer un Lcarte",
+                "search": "Recherche pour Lcarte"
+            },
+            "created": "Un nouveau Lcarte a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lcarte avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lcarte avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lcarte {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lcarte"
+            },
+            "code": "Code",
+            "lpoint": "Lpoint",
+            "lzone": "Lzone"
+        }
+    }
+}

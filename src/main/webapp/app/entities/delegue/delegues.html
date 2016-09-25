@@ -1,0 +1,87 @@
+<div>
+    <h2 data-translate="laakariApp.delegue.home.title">Delegues</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="delegue.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="laakariApp.delegue.home.createLabel">
+                        Create new Delegue
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span data-translate="laakariApp.delegue.code">Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mastersim"><span data-translate="laakariApp.delegue.mastersim">Mastersim</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numid"><span data-translate="laakariApp.delegue.numid">Numid</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="issuedate"><span data-translate="laakariApp.delegue.issuedate">Issuedate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateofbirth"><span data-translate="laakariApp.delegue.dateofbirth">Dateofbirth</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="quatier"><span data-translate="laakariApp.delegue.quatier">Quatier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sex"><span data-translate="laakariApp.delegue.sex">Sex</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pic"><span data-translate="laakariApp.delegue.pic">Pic</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lprofil.id"><span data-translate="laakariApp.delegue.lprofil">Lprofil</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="luser.id"><span data-translate="laakariApp.delegue.luser">Luser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="delegue in vm.delegues track by delegue.id">
+                    <td><a ui-sref="delegue-detail({id:delegue.id})">{{delegue.id}}</a></td>
+                    <td>{{delegue.code}}</td>
+                    <td>{{delegue.mastersim}}</td>
+                    <td>{{delegue.numid}}</td>
+                        <td>{{delegue.issuedate | date:'mediumDate'}}</td>
+                        <td>{{delegue.dateofbirth | date:'mediumDate'}}</td>
+                    <td>{{delegue.quatier}}</td>
+                    <td>{{delegue.sex}}</td>
+                    <td>
+                        <a ng-if="delegue.pic" ng-click="vm.openFile(delegue.picContentType, delegue.pic)">
+                            <img data-ng-src="{{'data:' + delegue.picContentType + ';base64,' + delegue.pic}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="delegue.pic">{{delegue.picContentType}}, {{vm.byteSize(delegue.pic)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="lprofil-detail({id:delegue.lprofil.id})">{{delegue.lprofil.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="luser-detail({id:delegue.luser.id})">{{delegue.luser.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="delegue-detail({id:delegue.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="delegue.edit({id:delegue.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="delegue.delete({id:delegue.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

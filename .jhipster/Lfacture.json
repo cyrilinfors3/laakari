@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "ltransactions",
+            "otherEntityName": "ltransactions",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "lfacture"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codebill",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fdate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160924184154",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "lfacture",
+    "pagination": "pager"
+}

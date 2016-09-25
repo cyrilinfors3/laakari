@@ -1,0 +1,144 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDelegueLabel" data-translate="laakariApp.delegue.home.createOrEditLabel">Create or edit a Delegue</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.delegue.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.delegue.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="vm.delegue.code"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.mastersim" for="field_mastersim">Mastersim</label>
+            <input type="number" class="form-control" name="mastersim" id="field_mastersim"
+                    ng-model="vm.delegue.mastersim"
+                    required />
+            <div ng-show="editForm.mastersim.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mastersim.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mastersim.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.numid" for="field_numid">Numid</label>
+            <input type="number" class="form-control" name="numid" id="field_numid"
+                    ng-model="vm.delegue.numid"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.issuedate" for="field_issuedate">Issuedate</label>
+                <div class="input-group">
+                    <input id="field_issuedate" type="text" class="form-control" name="issuedate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.delegue.issuedate" is-open="vm.datePickerOpenStatus.issuedate"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('issuedate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.issuedate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.issuedate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.dateofbirth" for="field_dateofbirth">Dateofbirth</label>
+                <div class="input-group">
+                    <input id="field_dateofbirth" type="text" class="form-control" name="dateofbirth" uib-datepicker-popup="{{dateformat}}" ng-model="vm.delegue.dateofbirth" is-open="vm.datePickerOpenStatus.dateofbirth"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateofbirth')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateofbirth.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateofbirth.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.quatier" for="field_quatier">Quatier</label>
+            <input type="text" class="form-control" name="quatier" id="field_quatier"
+                    ng-model="vm.delegue.quatier"
+                    required />
+            <div ng-show="editForm.quatier.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.quatier.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="laakariApp.delegue.sex" for="field_sex">Sex</label>
+            <input type="text" class="form-control" name="sex" id="field_sex"
+                    ng-model="vm.delegue.sex"
+                    required />
+            <div ng-show="editForm.sex.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sex.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPic($file, vm.delegue)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="laakariApp.delegue.pic" for="field_pic">Pic</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.delegue.picContentType + ';base64,' + vm.delegue.pic}}" style="max-height: 100px;" ng-if="vm.delegue.pic"/>
+                <div ng-if="vm.delegue.pic" class="help-block clearfix">
+                    <span class="pull-left">{{vm.delegue.picContentType}}, {{vm.byteSize(vm.delegue.pic)}}</span>
+                    <button ng-click="vm.delegue.pic=null;vm.delegue.picContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPic($file, vm.delegue)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pic" id="field_pic"
+                    ng-model="vm.delegue.pic"
+                     />
+            <input type="hidden" class="form-control" name="picContentType" id="field_picContentType"
+                    ng-model="vm.delegue.picContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="laakariApp.delegue.lprofil" for="field_lprofil">Lprofil</label>
+            <select class="form-control" id="field_lprofil" name="lprofil" ng-model="vm.delegue.lprofil" ng-options="lprofil as lprofil.id for lprofil in vm.lprofils | orderBy:'id' track by lprofil.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="laakariApp.delegue.luser" for="field_luser">Luser</label>
+            <select class="form-control" id="field_luser" name="luser" ng-model="vm.delegue.luser" ng-options="luser as luser.id for luser in vm.lusers track by luser.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

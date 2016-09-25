@@ -1,0 +1,27 @@
+{
+    "laakariApp": {
+        "lmessage" : {
+            "home": {
+                "title": "Lmessages",
+                "createLabel": "Create a new Lmessage",
+                "createOrEditLabel": "Create or edit a Lmessage",
+                "search": "Search for Lmessage"
+            },
+            "created": "A new Lmessage is created with identifier {{ param }}",
+            "updated": "A Lmessage is updated with identifier {{ param }}",
+            "deleted": "A Lmessage is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lmessage {{ id }}?"
+            },
+            "detail": {
+                "title": "Lmessage"
+            },
+            "sentdate": "Sentdate",
+            "msgcontent": "Msgcontent",
+            "senthours": "Senthours",
+            "sender": "Sender",
+            "reciever": "Reciever",
+            "luser": "Luser"
+        }
+    }
+}

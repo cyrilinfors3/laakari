@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "larrondissement" : {
+            "home": {
+                "title": "Larrondissements",
+                "createLabel": "Create a new Larrondissement",
+                "createOrEditLabel": "Create or edit a Larrondissement",
+                "search": "Search for Larrondissement"
+            },
+            "created": "A new Larrondissement is created with identifier {{ param }}",
+            "updated": "A Larrondissement is updated with identifier {{ param }}",
+            "deleted": "A Larrondissement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Larrondissement {{ id }}?"
+            },
+            "detail": {
+                "title": "Larrondissement"
+            },
+            "nom": "Nom",
+            "ville": "Ville",
+            "lzone": "Lzone"
+        }
+    }
+}

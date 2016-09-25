@@ -1,0 +1,29 @@
+{
+    "laakariApp": {
+        "lprofil" : {
+            "home": {
+                "title": "Lprofils",
+                "createLabel": "Créer un nouveau Lprofil",
+                "createOrEditLabel": "Créer ou éditer un Lprofil",
+                "search": "Recherche pour Lprofil"
+            },
+            "created": "Un nouveau Lprofil a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lprofil avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lprofil avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lprofil {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lprofil"
+            },
+            "login": "Login",
+            "pass": "Pass",
+            "tel": "Tel",
+            "pic": "Pic",
+            "dmanager": "Dmanager",
+            "dealer": "Dealer",
+            "sdealer": "Sdealer",
+            "delegue": "Delegue"
+        }
+    }
+}

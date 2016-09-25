@@ -1,0 +1,24 @@
+{
+    "laakariApp": {
+        "lregion" : {
+            "home": {
+                "title": "Lregions",
+                "createLabel": "Create a new Lregion",
+                "createOrEditLabel": "Create or edit a Lregion",
+                "search": "Search for Lregion"
+            },
+            "created": "A new Lregion is created with identifier {{ param }}",
+            "updated": "A Lregion is updated with identifier {{ param }}",
+            "deleted": "A Lregion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lregion {{ id }}?"
+            },
+            "detail": {
+                "title": "Lregion"
+            },
+            "nom": "Nom",
+            "capital": "Capital",
+            "lzone": "Lzone"
+        }
+    }
+}

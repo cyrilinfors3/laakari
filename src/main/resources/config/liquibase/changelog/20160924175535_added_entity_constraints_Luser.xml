@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Luser.
+    -->
+    <changeSet id="20160924175535-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lzone_id"
+                                 baseTableName="luser"
+                                 constraintName="fk_luser_lzone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lzone"/>
+
+    </changeSet>
+</databaseChangeLog>

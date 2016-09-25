@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="laakariApp.lzone.detail.title">Lzone</span> {{vm.lzone.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="laakariApp.lzone.datecreation">Datecreation</span></dt>
+        <dd>
+            <span>{{vm.lzone.datecreation | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.datemodif">Datemodif</span></dt>
+        <dd>
+            <span>{{vm.lzone.datemodif | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.type">Type</span></dt>
+        <dd>
+            <span>{{vm.lzone.type}}</span>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.lcarte">Lcarte</span></dt>
+        <dd>
+            <a ui-sref="lcarte-detail({id:vm.lzone.lcarte.id})">{{vm.lzone.lcarte.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.lregion">Lregion</span></dt>
+        <dd>
+            <a ui-sref="lregion-detail({id:vm.lzone.lregion.id})">{{vm.lzone.lregion.id}}</a>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.larrondissement">Larrondissement</span></dt>
+        <dd>
+            <span ng-repeat="larrondissement in vm.lzone.larrondissements">
+                <a ui-sref="larrondissement-detail({id: larrondissement.id})">{{larrondissement.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="laakariApp.lzone.lville">Lville</span></dt>
+        <dd>
+            <span ng-repeat="lville in vm.lzone.lvilles">
+                <a ui-sref="lville-detail({id: lville.id})">{{lville.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="lzone-detail.edit({id:vm.lzone.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Lcarte.
+    -->
+    <changeSet id="20160925115826-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lcartes_id"
+                                 baseTableName="lcarte_lpoint"
+                                 constraintName="fk_lcarte_lpoint_lcartes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lcarte"/>
+        <addForeignKeyConstraint baseColumnNames="lpoints_id"
+                                 baseTableName="lcarte_lpoint"
+                                 constraintName="fk_lcarte_lpoint_lpoints_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lpoint"/>
+        
+    </changeSet>
+</databaseChangeLog>

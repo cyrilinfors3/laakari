@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Lzone.
+    -->
+    <changeSet id="20160925115150-1" author="jhipster">
+        <createTable tableName="lzone">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="datecreation" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="datemodif" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+                        <column name="lcarte_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="lregion_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="lzone" columnName="datecreation" columnDataType="datetime"/>
+        <dropDefaultValue tableName="lzone" columnName="datemodif" columnDataType="datetime"/>
+        
+        <createTable tableName="lzone_larrondissement">
+            <column name="larrondissements_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lzones_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="lzones_id, larrondissements_id" tableName="lzone_larrondissement"/>
+        
+        <createTable tableName="lzone_lville">
+            <column name="lvilles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lzones_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="lzones_id, lvilles_id" tableName="lzone_lville"/>
+        
+    </changeSet>
+</databaseChangeLog>
