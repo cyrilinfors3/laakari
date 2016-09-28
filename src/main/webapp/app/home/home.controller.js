@@ -19,7 +19,16 @@
         });
 
         getAccount();
+        $scope.showPopover = function($modu) {
+        	  $scope.popoverIsVisible = true; 
+        	  $scope.popoverContent=$modu;
+        	};
 
+        	$scope.hidePopover = function () {
+        	 // $scope.popoverIsVisible = false;
+        	  $scope.popoverContent="oooooo";
+        	  
+        	};
         function getAccount() {
             Principal.identity().then(function(account) {
                 vm.account = account;
