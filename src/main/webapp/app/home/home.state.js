@@ -27,6 +27,44 @@
                     return $translate.refresh();
                 }]
             }
+        }).state('login', {
+            parent: 'app',
+            url: '/login',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/components/login/login.html',
+                    controller: 'LoginController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('login');
+                    return $translate.refresh();
+                }]
+            }
+        }).state('accm', {
+            parent: 'app',
+            url: '/accm',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/modulee/accm/accm.html',
+                    controller: 'AccmController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('accm');
+                    return $translate.refresh();
+                }]
+            }
         });
     }
 })();

@@ -1,3 +1,4 @@
+
 <div ng-cloak>
     <div class="row">
        
@@ -12,7 +13,7 @@
                 <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
                 </div>
-                <table class="table table-responsive" >
+                <table class="table table-responsive" ng-switch-when="true">
 			    <thead>
 			      <tr>
 			        <th width="50%">module</th>
@@ -22,7 +23,7 @@
 			    <tbody>
 			      <tr >
 			        <td>
-			           <div class="alert alert-success" ng-switch-when="true" ng-mouseover="showPopover(1)" ng-mouseleave="hidePopover()">
+			           <div class="alert alert-success"  ng-mouseover="showPopover(1)" ng-mouseleave="hidePopover()">
                           <span class="glyphicon glyphicon-globe gi-2x">{{carte}}</span>
                        </div>
 			        </td>
@@ -35,14 +36,14 @@
 			      </tr>
 			      <tr>
 			        <td>
-                       <div class="alert alert-success" ng-switch-when="true" ng-mouseover="showPopover(2)" ng-mouseleave="hidePopover()">
+                       <div class="alert alert-success"  ng-mouseover="showPopover(2)" ng-mouseleave="hidePopover()">
                        <span class="glyphicon glyphicon-map-marker gi-2x">{{callbox}}</span>
                   </div>
                     </td> 
 			      </tr>
 			      <tr>
 			        <td>
-			            <div class="alert alert-success" ng-switch-when="true" ng-mouseover="showPopover(3)" ng-mouseleave="hidePopover()">
+			            <div class="alert alert-success"  ng-mouseover="showPopover(3)" ng-mouseleave="hidePopover()">
 	                     <span class="glyphicon glyphicon-envelope gi-2x">{{recieved}}</span>
 	                     <span class="glyphicon glyphicon-send gi-2x">{{send}}</span>
 	                    </div>
@@ -50,7 +51,7 @@
 			      </tr>
 			      <tr>
 			        <td>
-			          <div class="alert alert-success" ng-switch-when="true" ng-mouseover="showPopover(4)" ng-mouseleave="hidePopover()">
+			          <div class="alert alert-success"  ng-mouseover="showPopover(4)" ng-mouseleave="hidePopover()">
 	                     <span class="glyphicon glyphicon-earphone gi-2x">{{makecall}}</span>
 	                   </div>
 			        </td> 
@@ -63,3 +64,49 @@
         </div>
     </div>
 </div>
+  <!--
+  
+  <div ng-cloak>
+    <div class="row">
+        
+        
+            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
+            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+            
+
+       <div >
+        <div class="well fwell" >
+             
+	           
+	           
+	         </div>
+          <div ng-switch="vm.isAuthenticated()" >
+           <div class="col-md-5 col-md-offset-2" ng-switch-when="false" >
+           
+            <p></p>
+            
+        </div>
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+                <div class="alert alert-success" ng-switch-when="true">
+                     <span class="glyphicon glyphicon-globe gi-5x">{{carte}}</span>
+                </div>
+                 <div class="alert alert-success" ng-switch-when="true">
+                     <span class="glyphicon glyphicon-map-marker gi-5x">{{callbox}}</span>
+                </div>
+                 <div class="alert alert-success" ng-switch-when="true">
+                     <span class="glyphicon glyphicon-envelope gi-2x">{{recieved}}</span>
+                     <span class="glyphicon glyphicon-send gi-2x">{{send}}</span>
+                </div>
+                <div class="alert alert-success" ng-switch-when="true">
+                     <span class="glyphicon glyphicon-earphone gi-5x">{{makecall}}</span>
+                </div>
+                <div class="alert alert-success" ng-switch-when="true">
+                     <span class="glyphicon glyphicon-phone gi-5x">{{callboxlist}}</span>
+                </div>
+              
+        </div>
+    </div>
+</div>
+-->
