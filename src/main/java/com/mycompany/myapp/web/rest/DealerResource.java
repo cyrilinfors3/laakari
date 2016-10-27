@@ -52,6 +52,7 @@ public class DealerResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dealer", "idexists", "A new dealer cannot already have an ID")).body(null);
         }
         Dealer result = dealerRepository.save(dealer);
+        
         return ResponseEntity.created(new URI("/api/dealers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("dealer", result.getId().toString()))
             .body(result);
@@ -113,6 +114,7 @@ public class DealerResource {
     public ResponseEntity<Dealer> getDealer(@PathVariable Long id) {
         log.debug("REST request to get Dealer : {}", id);
         Dealer dealer = dealerRepository.findOne(id);
+       
         return Optional.ofNullable(dealer)
             .map(result -> new ResponseEntity<>(
                 result,
@@ -132,6 +134,7 @@ public class DealerResource {
     @Timed
     public ResponseEntity<Void> deleteDealer(@PathVariable Long id) {
         log.debug("REST request to delete Dealer : {}", id);
+     
         dealerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("dealer", id.toString())).build();
     }

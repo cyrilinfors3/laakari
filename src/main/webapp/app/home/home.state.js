@@ -65,6 +65,25 @@
                     return $translate.refresh();
                 }]
             }
+        }).state('newuser', {
+            parent: 'app',
+            url: '/newuser',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/modulee/newuser/newuser.html',
+                    controller: 'NewuserController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('accm');
+                    return $translate.refresh();
+                }]
+            }
         });
     }
 })();

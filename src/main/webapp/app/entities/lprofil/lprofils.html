@@ -21,6 +21,8 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="login"><span data-translate="laakariApp.lprofil.login">Login</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="pass"><span data-translate="laakariApp.lprofil.pass">Pass</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pass"><span >Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    
                     <th jh-sort-by="tel"><span data-translate="laakariApp.lprofil.tel">Tel</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="pic"><span data-translate="laakariApp.lprofil.pic">Pic</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dmanager.id"><span data-translate="laakariApp.lprofil.dmanager">Dmanager</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -34,6 +36,7 @@
                     <td><a ui-sref="lprofil-detail({id:lprofil.id})">{{lprofil.id}}</a></td>
                     <td>{{lprofil.login}}</td>
                     <td>{{lprofil.pass}}</td>
+                     <td>{{lprofil.email}}</td>
                     <td>{{lprofil.tel}}</td>
                     <td>
                         <a ng-if="lprofil.pic" ng-click="vm.openFile(lprofil.picContentType, lprofil.pic)">
@@ -52,6 +55,10 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
                             <button type="submit"
                                     ui-sref="lprofil-detail({id:lprofil.id})"
                                     class="btn btn-info btn-sm">

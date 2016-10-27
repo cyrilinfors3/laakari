@@ -52,6 +52,7 @@ public class DmanagerResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dmanager", "idexists", "A new dmanager cannot already have an ID")).body(null);
         }
         Dmanager result = dmanagerRepository.save(dmanager);
+      
         return ResponseEntity.created(new URI("/api/dmanagers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("dmanager", result.getId().toString()))
             .body(result);
@@ -100,6 +101,8 @@ public class DmanagerResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    
+    
     /**
      * GET  /dmanagers/:id : get the "id" dmanager.
      *
@@ -135,5 +138,32 @@ public class DmanagerResource {
         dmanagerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("dmanager", id.toString())).build();
     }
+    
+    /**
+     * GET  /dmrang:reg : get max  dmanagers rang by region.
+     */
+    @RequestMapping(value = "/dmrang/{reg}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        public long getMaxDmanagersRangByregion(@PathVariable String reg)
+             {
+            log.debug("REST request to get max Dmanagers rang by region");
+            List<Dmanager> listDM = dmanagerRepository.findAll();
+            
+            String lastrang = null;
+            if (!listDM.isEmpty()) {
+            	boolean found=false;
+            	long i =listDM.size();
+            	do{
+            		i--;
+            		
+            		
+            	}while(found==false || i>0);
+            	//lastrang = strings.get(strings.size() - 1);
+            	
+            }
+			return 0;
+        }
 
 }

@@ -5,9 +5,9 @@
         .module('laakariApp')
         .controller('DmanagerDialogController', DmanagerDialogController);
 
-    DmanagerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Dmanager', 'Lprofil', 'Luser'];
+    DmanagerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Dmanager', 'Lprofil', 'Luser', 'User'];
 
-    function DmanagerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Dmanager, Lprofil, Luser) {
+    function DmanagerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Dmanager, Lprofil, Luser, User) {
         var vm = this;
 
         vm.dmanager = entity;
@@ -25,11 +25,28 @@
         }
 
         function save () {
+        	dmuser= {
+        			  "login" : "admin1",
+        			  "firstName" : "Administrator1",
+        			  "lastName" : "Administrator1",
+        			  "email" : "admin1@localhost",
+        			  "activated" : true,
+        			  "langKey" : "en",
+        			  "authorities" : [ "ROLE_USER", "ROLE_ADMIN" ],
+        			  "id" : null,
+        			  "createdBy" : "system",
+        			  "createdDate" : null,
+        			  "lastModifiedBy" : null,
+        			  "lastModifiedDate" : null,
+        			  "password" : "admin1"
+        			}
             vm.isSaving = true;
             if (vm.dmanager.id !== null) {
                 Dmanager.update(vm.dmanager, onSaveSuccess, onSaveError);
+                
             } else {
                 Dmanager.save(vm.dmanager, onSaveSuccess, onSaveError);
+              
             }
         }
 

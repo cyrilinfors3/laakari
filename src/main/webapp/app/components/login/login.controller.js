@@ -133,6 +133,7 @@
                 $state.go('home');
             }).catch(function () {
                 vm.authenticationError = true;
+                $state.go('login');
             });
         }
 

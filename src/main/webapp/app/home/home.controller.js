@@ -65,11 +65,41 @@
         $scope.showPopover = function($modu) {
         	  $scope.popoverIsVisible = true; 
         	  $scope.popoverContent=$modu;
-        	  if($modu==2){
-        		  $state.go('accm');
-        	  }
+        	 switch($modu)
+        	 {
+        	 case 1:
+	        	{
+        		 $scope.popoverContent=$scope.accountManagement;
+        		 break;
+	        	}
+        	 case 2:
+	        	{
+     		 $scope.popoverContent=$scope.zoneManagement;
+     		 break;
+	        	}
+        	 case 3:
+	        	{
+		  		 $scope.popoverContent=$scope.accountingManagement;
+		  		 break;
+		        	}
+        	 case 4:
+	        	{
+		  		 $scope.popoverContent=$scope.communication;
+		  		 break;
+		        	}
+	         }
+        	 
+        	 
+        	 // if($modu==2){
+        		//  $state.go('accm');
+        	  //}
         	};
-
+               
+        	 $scope.showModule = function($modu) {	 
+            	 if($modu==2){
+            		  $state.go('accm');
+            	 }
+            	};
         	$scope.hidePopover = function () {
         	 // $scope.popoverIsVisible = false;
         	  $scope.popoverContent="oooooo";
@@ -84,13 +114,10 @@
         testIfisAuth();
       
         
-        $scope.carte="carte";
-        $scope.callbox="road callbox";
-        $scope.send="send message";
-        $scope.makecall="make call";
-        $scope.callboxlist="callbox list";
-        $scope.recieved="recieved message";
-        
+        $scope.accountManagement="Account Management";
+        $scope.zoneManagement="Zone Management";
+        $scope.accountingManagement="Accounting Management";
+        $scope.communication="Communication";
 
         function getAccount() {
             Principal.identity().then(function(account) {
@@ -100,6 +127,10 @@
         }
         function register () {
             $state.go('register');
+        }
+        
+        $scope.createuser=function(){
+        	$state.go('newuser');
         }
          
     }

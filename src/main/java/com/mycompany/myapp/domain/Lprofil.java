@@ -30,6 +30,10 @@ public class Lprofil implements Serializable {
     @NotNull
     @Column(name = "pass", nullable = false)
     private String pass;
+    
+    @NotNull
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @NotNull
     @Column(name = "tel", nullable = false)
@@ -59,9 +63,7 @@ public class Lprofil implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  
 
     public String getLogin() {
         return login;
@@ -79,7 +81,9 @@ public class Lprofil implements Serializable {
     public String getPass() {
         return pass;
     }
-
+    public String getEmail() {
+        return email;
+    }
     public Lprofil pass(String pass) {
         this.pass = pass;
         return this;
@@ -88,7 +92,9 @@ public class Lprofil implements Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public Integer getTel() {
         return tel;
     }

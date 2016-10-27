@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLprofilLabel" >Create a user</h4>
+    </div>
+    <div >
+        
+        <div class="form-group">
+            <label class="control-label" >Login</label>
+            <input type="text" class="form-control" name="login" id="field_login" ng-model="login" required />
+            <div ng-show="editForm.login.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.login.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label"  for="field_pass">Pass</label>
+            <input type="text" class="form-control" name="pass" id="field_pass"  ng-model="pass" required />
+            <div ng-show="editForm.pass.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.pass.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+              <div class="form-group">
+            <label class="control-label"  for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email" ng-model="email"/>
+           
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tel">Tel</label>
+            <input type="number" class="form-control" name="tel" id="field_tel" ng-model="tel"required />
+            <div ng-show="editForm.tel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tel.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tel.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+    <div >
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit"  class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
