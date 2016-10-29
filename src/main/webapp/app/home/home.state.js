@@ -65,22 +65,41 @@
                     return $translate.refresh();
                 }]
             }
-        }).state('newuser', {
+        }).state('newuserdm', {
             parent: 'app',
-            url: '/newuser',
+            url: '/newuserdm',
             data: {
                 authorities: []
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/modulee/newuser/newuser.html',
-                    controller: 'NewuserController',
+                    templateUrl: 'app/modulee/newuserdm/newuserdm.html',
+                    controller: 'NewuserdmController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('accm');
+                    $translatePartialLoader.addPart('newuserdm');
+                    return $translate.refresh();
+                }]
+            }
+        }).state('newuserd', {
+            parent: 'app',
+            url: '/newuserd',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/modulee/newuserd/newuserd.html',
+                    controller: 'NewuserdController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('newuserd');
                     return $translate.refresh();
                 }]
             }

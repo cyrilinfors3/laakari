@@ -2,10 +2,11 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Dealer;
-
+import com.mycompany.myapp.domain.Dmanager;
 import com.mycompany.myapp.repository.DealerRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -51,6 +53,7 @@ public class DealerResource {
         if (dealer.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dealer", "idexists", "A new dealer cannot already have an ID")).body(null);
         }
+        dealer.setShopcode(this.getMaxDealerRangByregion(dealer.getShopcode())); 
         Dealer result = dealerRepository.save(dealer);
         
         return ResponseEntity.created(new URI("/api/dealers/" + result.getId()))
@@ -138,5 +141,44 @@ public class DealerResource {
         dealerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("dealer", id.toString())).build();
     }
-
+ 
+    /**
+     * GET  /dmrang:reg : get max  dmanagers rang by region and produce code.
+     */
+    @RequestMapping(value = "/drang/{reg}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        public String getMaxDealerRangByregion(@PathVariable String reg)
+             {
+            log.debug("REST request to get max Dmanagers rang by region");
+            List<Dealer> listD = dealerRepository.findByShopcodeContaining(reg);
+            String code1="0";
+            String result=reg+"0001";
+            if (!listD.isEmpty()) {
+            	Dealer dealer = (listD.get(0).getId() <= listD.get(listD.size()-1).getId()) ? listD.get(listD.size()-1) : listD.get(0);
+            	if(dealer .getShopcode().length()>3){
+            		code1 =dealer.getShopcode().substring(3, dealer.getShopcode().length());
+            		int code=Integer.valueOf(code1)+1;
+            		
+            		result=reg+chiffre(code);
+            	}
+            	
+            }
+            return result;
+        }
+    private String chiffre(int code) {
+		// TODO Auto-generated method stub
+    	String oo="";
+    	if(code<10){
+    		oo="000";
+    	}else if(code<100)
+    	{
+    		oo="00";
+    	}else if(code<1000)
+    	{
+    		oo="0";
+    	}
+		return oo+code;
+	}
 }

@@ -3,11 +3,11 @@
 
     angular
         .module('laakariApp')
-        .controller('NewuserController', NewuserController);
+        .controller('NewuserdmController', NewuserdmController);
 
-    NewuserController.$inject = ['$rootScope', 'Principal',  'Auth','$state','$http', 'Dmanager', '$scope','Lprofil'];
+    NewuserdmController.$inject = ['$rootScope', 'Principal',  'Auth','$state','$http', 'Dmanager', '$scope','Lprofil'];
 
-    function NewuserController($rootScope, Principal,  Auth, $state, $http,  Dmanager, $scope, Lprofil) {
+    function NewuserdmController($rootScope, Principal,  Auth, $state, $http,  Dmanager, $scope, Lprofil) {
         var vm = this;
         vm.save = save;
         vm.registerAccount = {};

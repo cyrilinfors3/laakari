@@ -129,8 +129,27 @@
             $state.go('register');
         }
         
-        $scope.createuser=function(){
-        	$state.go('newuser');
+        $scope.createuser=function($n){
+          switch($n)
+          {
+          case 1:
+        	  {
+        	  console.log('newuserdm');
+        	  $state.go('newuserdm');
+        	  break;
+        	  }
+          case 2:
+	    	  {
+	    	  $state.go('newuserd');
+	    	  break;
+	    	  }
+          case 3:
+    	  {
+    	  $state.go('newuser');
+    	  break;
+    	  }
+          }
+        	
         }
          
     }

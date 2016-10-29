@@ -14,10 +14,16 @@
                     You are logged in as user "{{vm.account.login}}".
                     
                 </div>
-                 <button class="btn btn-primary" ng-click="createuser()">
+                 <button class="btn btn-primary" ng-click="createuser(1)">
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new SD
+                        Create new DM
+                    </span>
+                </button>
+                <button class="btn btn-primary" ng-click="createuser(2)">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Dealer
                     </span>
                 </button>
                 <table class="table table-responsive" ng-switch-when="true">
