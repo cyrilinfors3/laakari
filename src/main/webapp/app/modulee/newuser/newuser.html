@@ -1,59 +1,70 @@
 
 <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myLprofilLabel" >Create a user</h4>
-    </div>
-    <div >
-        
-        <div class="form-group">
-            <label class="control-label" >Login</label>
-            <input type="text" class="form-control" name="login" id="field_login" ng-model="login" required />
-            <div ng-show="editForm.login.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.login.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label"  for="field_pass">Pass</label>
-            <input type="text" class="form-control" name="pass" id="field_pass"  ng-model="pass" required />
-            <div ng-show="editForm.pass.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.pass.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-              <div class="form-group">
-            <label class="control-label"  for="field_email">Email</label>
-            <input type="text" class="form-control" name="email" id="field_email" ng-model="email"/>
-           
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_tel">Tel</label>
-            <input type="number" class="form-control" name="tel" id="field_tel" ng-model="tel"required />
-            <div ng-show="editForm.tel.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.tel.$error.required" data-translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.tel.$error.number" data-translate="entity.validation.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        
-    </div>
-    <div >
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <div class="form-group">
+	            <label class="control-label"for="field_tel">Tel</label>
+	            <input type="number" class="form-control" name="tel" id="field_tel"
+	                    ng-model="vm.tel"
+	                    required />
+	            <div ng-show="editForm.tel.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.tel.$error.required" data-translate="entity.validation.required">
+	                    This field is required.
+	                </p>
+	                <p class="help-block"
+	                    ng-show="editForm.tel.$error.number" data-translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+	            </div>
+	        </div>
+             <div class="form-group">
+               <label class="control-label"  >Region </label>
+       
+                    <select class="form-control" name="region" id="sel1" ng-model="vm.region" >
+				        <option value="CNT">Centre</option>
+				        <option value="LIT">Littoral</option>
+				        <option value="NRT">NORT</option>
+				        <option value="SUD">SUD</option>
+				      </select>
+             </div>
+            <div class="form-group">
+                    <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                           ng-model="vm.email" ng-minlength=5 ng-maxlength=100 required>
+                    <div ng-show="form.email.$dirty && form.email.$invalid">
+                        <p class="help-block"
+                               ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
+                            Your e-mail is required.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
+                            Your e-mail is invalid.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.email.$error.minlength" data-translate="global.messages.validate.email.minlength">
+                            Your e-mail is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">
+                            Your e-mail cannot be longer than 100 characters.
+                        </p>
+                    </div>
+                    {{vm.emailexist}}
+                </div>
+       
+       <div class="form-group">
+               <label class="control-label"  >Langue </label>
+       
+                    <select class="form-control" name="langKey" ng-model="vm.langKey"   >
+				        <option value="en">english</option>
+				        <option value="fr">french</option>
+				      </select>
+             </div> 
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit"  class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
         </button>
     </div>

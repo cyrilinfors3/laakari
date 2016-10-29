@@ -1,11 +1,15 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Dmanager;
 import com.mycompany.myapp.domain.Lprofil;
-
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.LprofilRepository;
+import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
+import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -37,6 +42,10 @@ public class LprofilResource {
     @Inject
     private LprofilRepository lprofilRepository;
 
+    @Inject
+    private DmanagerResource dmanagerResource;
+    @Inject
+    private UserService userService;
     /**
      * POST  /lprofils : Create a new lprofil.
      *
@@ -144,6 +153,50 @@ public class LprofilResource {
         log.debug("REST request to delete Lprofil : {}", id);
         lprofilRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("lprofil", id.toString())).build();
+    }
+    
+    /**
+     * GET  /lprofils/: langKey,email, region, tel: get the  lprofil created using langKey,email, region, tel .
+     *
+     * @param langKey,email, region, tel of the lprofil to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the lprofil, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/lprofils/{langKey}/{email}/{region}/{tel}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    
+    public Dmanager getLprofil(@PathVariable String langKey,String email,String region, Integer tel) {
+        log.debug("REST request to get a new Lprofil : {}");
+        Dmanager dmanager= new  Dmanager();
+        dmanager.setAgentcode(region);
+        dmanager.setTel(tel);
+        try {
+			dmanagerResource.createDmanager(dmanager);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//        Dmanager dmanager = dmanagerResource.newDmanagerResource(region, tel);
+//        User user = new User();
+//        user.setLogin(dmanager.getAgentcode());
+//        user.setEmail(email);
+//        user.setLangKey(langKey);
+//        user.setPassword(dmanager.getAgentcode());
+//        User newUser = userService.createUser(new ManagedUserVM(user));
+//        Lprofil lprofil= new Lprofil();
+//        lprofil.setLogin(newUser.getLogin());
+//        lprofil.setEmail(newUser.getEmail());
+//        lprofil.setPass(newUser.getPassword());
+//        lprofil.setTel(tel);
+//        Lprofil result = lprofilRepository.save(lprofil);
+		return dmanager;
+        
+        
+//        return Optional.ofNullable(lprofil)
+//            .map(result -> new ResponseEntity<>(
+//                result,
+//                HttpStatus.OK))
+//            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 }

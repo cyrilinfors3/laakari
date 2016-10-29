@@ -2,10 +2,10 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Dmanager;
-
 import com.mycompany.myapp.repository.DmanagerRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -51,8 +52,10 @@ public class DmanagerResource {
         if (dmanager.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dmanager", "idexists", "A new dmanager cannot already have an ID")).body(null);
         }
+        dmanager.setAgentcode(this.getMaxDmanagersRangByregion(dmanager.getAgentcode())); 
         Dmanager result = dmanagerRepository.save(dmanager);
-      
+        
+        //this.updateDmanager(result);
         return ResponseEntity.created(new URI("/api/dmanagers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("dmanager", result.getId().toString()))
             .body(result);
@@ -140,30 +143,59 @@ public class DmanagerResource {
     }
     
     /**
-     * GET  /dmrang:reg : get max  dmanagers rang by region.
+     * GET  /dmrang:reg : get max  dmanagers rang by region and produce code.
      */
     @RequestMapping(value = "/dmrang/{reg}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
         @Timed
-        public long getMaxDmanagersRangByregion(@PathVariable String reg)
+        public String getMaxDmanagersRangByregion(@PathVariable String reg)
              {
             log.debug("REST request to get max Dmanagers rang by region");
-            List<Dmanager> listDM = dmanagerRepository.findAll();
-            
-            String lastrang = null;
+            List<Dmanager> listDM = dmanagerRepository.findByAgentcodeContaining(reg);
+            String code1="0";
+            String result=reg+"0001";
             if (!listDM.isEmpty()) {
-            	boolean found=false;
-            	long i =listDM.size();
-            	do{
-            		i--;
+            	Dmanager dmanager = (listDM.get(0).getId() <= listDM.get(listDM.size()-1).getId()) ? listDM.get(listDM.size()-1) : listDM.get(0);
+            	if(dmanager.getAgentcode().length()>3){
+            		code1 =dmanager.getAgentcode().substring(3, dmanager.getAgentcode().length());
+            		int code=Integer.valueOf(code1)+1;
             		
-            		
-            	}while(found==false || i>0);
-            	//lastrang = strings.get(strings.size() - 1);
+            		result=reg+chiffre(code);
+            	}
             	
             }
-			return 0;
+            return result;
         }
+    private String chiffre(int code) {
+		// TODO Auto-generated method stub
+    	String oo="";
+    	if(code<10){
+    		oo="000";
+    	}else if(code<100)
+    	{
+    		oo="00";
+    	}else if(code<1000)
+    	{
+    		oo="0";
+    	}
+		return oo+code;
+	}
 
+	/**
+     * create new DM and return it ID
+     */
+    @Timed
+    public Dmanager newDmanagerResource(String region, Integer tel){
+    	List<Dmanager> listDm=dmanagerRepository.findAll();
+    	Dmanager dmanager= new Dmanager();
+    	//long rang=this.getMaxDmanagersRangByregion(region)+1;
+    	dmanager.setAgentcode(region+" vv");
+    	dmanager.setId(listDm.get(listDm.size()-1).getId()+1);
+    	dmanager.setTel(tel);
+    	 Dmanager result = dmanagerRepository.save(dmanager);
+		return result;
+    	
+    }
+  
 }

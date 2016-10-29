@@ -97,7 +97,7 @@ public class UserResource {
             return ResponseEntity.badRequest()
                 .headers(HeaderUtil.createFailureAlert("userManagement", "emailexists", "Email already in use"))
                 .body(null);
-        } else {
+       } else {
             User newUser = userService.createUser(managedUserVM);
             String baseUrl = request.getScheme() + // "http"
             "://" +                                // "://"
@@ -198,5 +198,24 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
+    }
+    
+    /**
+     * GET  /users/:login : get the "login" user.
+     *
+     * @param login the login of the user to find
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/useree/{email}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public boolean getUserwithEmail(@PathVariable String email) {
+        log.debug("REST request to get User having email : {}", email);
+        boolean result = false;
+		if(userRepository.findOneByEmail(email).isPresent()){
+        	result=true;
+        }
+        return result;
     }
 }
