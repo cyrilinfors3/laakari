@@ -84,6 +84,28 @@
                     return $translate.refresh();
                 }]
             }
+        }).state('newuserdmsc', {
+            parent: 'app',
+            url: '/newuserdmsc',
+            params: {
+                codep: '44'
+            },
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/modulee/newuserdmsc/newuserdmsc.html',
+                    controller: 'NewuserdmscController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('newuserdmsc');
+                    return $translate.refresh();
+                }]
+            }
         }).state('newuserd', {
             parent: 'app',
             url: '/newuserd',

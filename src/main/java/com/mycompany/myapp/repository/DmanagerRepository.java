@@ -12,4 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface DmanagerRepository extends JpaRepository<Dmanager,Long> {
 	List<Dmanager> findByAgentcodeContaining(String reg);
+
+	Dmanager findById(Long id);
 }

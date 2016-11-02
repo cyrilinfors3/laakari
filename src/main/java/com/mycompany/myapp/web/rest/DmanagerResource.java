@@ -2,9 +2,16 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Dmanager;
+import com.mycompany.myapp.domain.Lprofil;
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.DmanagerRepository;
+import com.mycompany.myapp.repository.LprofilRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.service.MailService;
+import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
+import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import java.net.URI;
@@ -29,12 +37,25 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
+@Transactional
 public class DmanagerResource {
 
     private final Logger log = LoggerFactory.getLogger(DmanagerResource.class);
         
     @Inject
     private DmanagerRepository dmanagerRepository;
+    
+    @Inject
+    private LprofilRepository lprofilRepository;
+    
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private MailService mailService;
+
+    @Inject
+    private UserService userService;
 
     /**
      * POST  /dmanagers : Create a new dmanager.
@@ -47,6 +68,7 @@ public class DmanagerResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+
     public ResponseEntity<Dmanager> createDmanager(@Valid @RequestBody Dmanager dmanager) throws URISyntaxException {
         log.debug("REST request to save Dmanager : {}", dmanager);
         if (dmanager.getId() != null) {
@@ -54,12 +76,77 @@ public class DmanagerResource {
         }
         dmanager.setAgentcode(this.getMaxDmanagersRangByregion(dmanager.getAgentcode())); 
         Dmanager result = dmanagerRepository.save(dmanager);
-        
+        //Lprofil p = newLprofil();
+       // log.debug("REST request to save lprofil : {}", p);
         //this.updateDmanager(result);
         return ResponseEntity.created(new URI("/api/dmanagers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("dmanager", result.getId().toString()))
             .body(result);
     }
+    /**
+     * POST  /dmanagers : Create a new dmanagerf test.
+     *
+     */
+    
+    @RequestMapping(value = "/dmanagersfull/{tel}/{region}/{email}/{langKey}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        @Transactional(dontRollbackOn=Exception.class)
+        public ResponseEntity<Dmanager> createDmanagertest(@PathVariable Integer tel,@PathVariable String region ,@PathVariable String email,@PathVariable String langKey) throws URISyntaxException {
+    	Dmanager dmanager=new Dmanager();
+    	
+    	log.debug("REST request to save Dmanager : {}", dmanager);
+            if (dmanager.getId() != null) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dmanager", "idexists", "A new dmanager cannot already have an ID")).body(null);
+            }
+            dmanager.setAgentcode(this.getMaxDmanagersRangByregion(region));
+            dmanager.setTel(tel);
+            Dmanager result = dmanagerRepository.save(dmanager);
+            Lprofil p = newLprofil(email);
+            p.setDmanager(dmanager);
+            String r=this.creatUser(dmanager.getAgentcode(), email, tel+"", true, langKey);
+            if(!r.isEmpty())
+            {
+            	lprofilRepository.delete(p);
+            	dmanagerRepository.delete(result);
+            	
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("User", "idexists", r)).body(null);
+            }
+            log.debug("REST request to save lprofil : {}", p);
+            //this.updateDmanager(result);
+            return ResponseEntity.created(new URI("/api/dmanagers/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert("dmanager", result.getId().toString()))
+                .body(result);
+        }
+    
+    @RequestMapping(value = "/dmanagerssc/{id}/{tel}/{region}/{email}/{langKey}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        @Transactional(dontRollbackOn=Exception.class)
+        public ResponseEntity<Lprofil> createDmanagertestsc(@PathVariable Long id,@PathVariable Integer tel,@PathVariable String region ,@PathVariable String email,@PathVariable String langKey) throws URISyntaxException {
+    	Dmanager dmanager=dmanagerRepository.findById(id);
+    	
+    	log.debug("REST request to save Dmanager : {}", dmanager);
+            if (dmanager== null) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dmanager", "dmanager not exists", "no dmanager ")).body(null);
+            }
+            Lprofil p = newLprofil(email);
+            p.setDmanager(dmanager);
+            String r=this.creatUser(dmanager.getAgentcode()+"souscompt", email, tel+"", true, langKey);
+            if(!r.isEmpty())
+            {
+            	lprofilRepository.delete(p);
+            	
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("User", "idexists", r)).body(null);
+            }
+            log.debug("REST request to save lprofil : {}", p);
+            //this.updateDmanager(result);
+            return ResponseEntity.created(new URI("/api/dmanagers/" + p.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert("dmanager", p.getId().toString()))
+                .body(p);
+        }
 
     /**
      * PUT  /dmanagers : Updates an existing dmanager.
@@ -84,6 +171,8 @@ public class DmanagerResource {
             .headers(HeaderUtil.createEntityUpdateAlert("dmanager", dmanager.getId().toString()))
             .body(result);
     }
+    
+    
 
     /**
      * GET  /dmanagers : get all the dmanagers.
@@ -197,5 +286,36 @@ public class DmanagerResource {
 		return result;
     	
     }
-  
+    @Timed
+    public Lprofil newLprofil(String email){
+    	Lprofil p=new Lprofil();
+    	p.setEmail(email);
+    	p.setLogin("ooooooooooo");
+    	p.setPass("dddddddd");
+    	p.setTel(22222222);
+    	 Lprofil result = lprofilRepository.save(p);
+		return result;
+    	
+    }
+    
+    public String creatUser(String login,String email,String password,boolean b,String langKey){
+        log.debug("REST request to save new generated User : {}");
+
+        //Lowercase the user login before comparing with database
+        if (userRepository.findOneByLogin(login.toLowerCase()).isPresent()) {
+        	log.debug("ERROR User login Exit alredy");
+            return "ERROR User login Exit alredy";
+        } else if (userRepository.findOneByEmail(email).isPresent()) {
+        	log.debug("ERROR User Email Exit alredy");
+            return "ERROR User Email Exit alredy";
+       } else {
+    	   User user=new User();
+    	   user.setActivated(b);user.setEmail(email);user.setLangKey(langKey);user.setLogin(login);
+    	   user.setPassword(password);
+    	   ManagedUserVM muserVM = new ManagedUserVM(user);
+    	   
+            User newUser = userService.createUser(muserVM);
+            return "";
+        }
+    }
 }

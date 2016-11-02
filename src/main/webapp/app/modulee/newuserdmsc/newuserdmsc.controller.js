@@ -3,54 +3,19 @@
 
     angular
         .module('laakariApp')
-        .controller('NewuserdmController', NewuserdmController);
+        .controller('NewuserdmscController', NewuserdmscController);
 
-    NewuserdmController.$inject = ['$rootScope', 'Principal',  'Auth','$state','$http', 'Dmanager', '$scope','Lprofil'];
+    NewuserdmscController.$inject = ['$rootScope', 'Principal',  'Auth','$state','$http', 'Dmanager', '$scope','Lprofil','$stateParams'];
 
-    function NewuserdmController($rootScope, Principal,  Auth, $state, $http,  Dmanager, $scope, Lprofil) {
+    function NewuserdmscController($rootScope, Principal,  Auth, $state, $http,  Dmanager, $scope, Lprofil, $stateParams) {
         var vm = this;
-        vm.savetest = savetest;
+        vm.save = save;
+        vm.codep=$stateParams.codep;
         vm.registerAccount = {};
         vm.dmanager={};
         vm.lprofil={};
         vm.emailexist="";
-          
-        function savetest(){
-        	if(!vm.id){
-        		savetestcompt ();
-        	}else{
-        		savetestSouscompt ();
-        	}
-        	
-        }
-        function savetestcompt () {
-        	vm.dmanager.tel= vm.tel;
-        	vm.dmanager.agentcode=vm.region;
-        	 $http.get("/api/dmanagersfull/"+vm.tel+"/"+vm.region+"/"+vm.email+"/"+vm.langKey)
-        	    .then(function(response) {
-        	    	console.log(response);
-        	        
-        	    }, function(response) {
-        	        
-        	    	console.log(response);
-        	    });
-        	    	
-        	
-        }
-        function savetestSouscompt () {
-        	vm.dmanager.tel= vm.tel;
-        	vm.dmanager.agentcode=vm.region;
-        	 $http.get("/api/dmanagerssc/"+vm.id+"/"+vm.tel+"/"+vm.region+"/"+vm.email+"/"+vm.langKey)
-        	    .then(function(response) {
-        	    	console.log(response);
-        	        
-        	    }, function(response) {
-        	        
-        	    	console.log(response);
-        	    });
-        	    	
-        	
-        }
+
         function save () {
         	vm.dmanager.tel= vm.tel;
         	vm.dmanager.agentcode=vm.region;

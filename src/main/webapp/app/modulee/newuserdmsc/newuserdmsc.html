@@ -1,6 +1,7 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.savetest()" show-validation>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
             <div class="form-group">
+              {{vm.codep}}
 	            <label class="control-label"for="field_tel">Tel</label>
 	            <input type="number" class="form-control" name="tel" id="field_tel"
 	                    ng-model="vm.tel"
@@ -58,17 +59,12 @@
 				        <option value="en">english</option>
 				        <option value="fr">french</option>
 				      </select>
-             </div>
-            <div class="form-group">
-               <input type="number" class="form-control" name="id" id="field_tel" ng-model="vm.id" /> 
-     </div>
+             </div> 
+    
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
         </button>
-       <button type="submit" class="btn btn-danger">
-           <span class="glyphicon glyphicon-save">SaveSC</span>
-       </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
         </button>
